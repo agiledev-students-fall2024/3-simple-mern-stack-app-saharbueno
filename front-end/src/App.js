@@ -5,6 +5,7 @@ import MessageStandalone from './MessageStandalone'
 import Home from './Home'
 import Header from './Header'
 import Footer from './Footer'
+import AboutUs from './AboutUs'
 
 const App = props => {
   return (
@@ -23,6 +24,12 @@ const App = props => {
             <Route
               path="/messages/:messageId"
               element={<MessageStandalone />}
+            />
+
+            {/* a route to see about us */}
+            <Route
+              path="/aboutus"
+              element={<AboutUs />}
             />
           </Routes>
         </main>

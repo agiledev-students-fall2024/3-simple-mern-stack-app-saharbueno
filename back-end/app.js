@@ -21,6 +21,7 @@ mongoose
 // load the dataabase models we want to deal with
 const { Message } = require('./models/Message')
 const { User } = require('./models/User')
+const { Aboutus } = require('./models/Aboutus')
 
 // a route to handle fetching all messages
 app.get('/messages', async (req, res) => {
@@ -74,6 +75,27 @@ app.post('/messages/save', async (req, res) => {
     return res.status(400).json({
       error: err,
       status: 'failed to save the message to the database',
+    })
+  }
+})
+
+// a route to handle getting information about me
+app.get('/aboutus', async (req, res) => {
+  // load information about me from database
+  try {
+    const aboutUs = await Aboutus.findOne({name: 'sahar'})
+    console.log(aboutUs.name)
+    res.json({
+      name: aboutUs.name,
+      content: aboutUs.content,
+      img: aboutUs.img,
+      status: 'all good',
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'failed to retrieve personal information from the database',
     })
   }
 })
