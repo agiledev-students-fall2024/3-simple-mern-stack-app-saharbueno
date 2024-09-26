@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import loadingIcon from './loading.gif'
+import './AboutUs.css'
 
 /**
  * A React component that represents a page about us
@@ -41,16 +42,19 @@ const AboutUs = props => {
 
     return (
         <>
-            <h1>about {name}</h1>
+          <h1 id="heading">About {name}</h1>
 
-            {content.map((text, index) => (
-                <div key={index}>{text}</div>
-            ))}
+          <div id="infoDiv">
+            <div id="contentDiv">
+              {content.map((text, index) => (
+                    <p class="content" key={index}>{text}</p>
+                ))}
+            </div>
+            <img id="img" src={img} alt="Picture of me"/>
+          </div>
 
-            <img src={img} alt="Picture of me"/>
-
-            {error && <p>{error}</p>}
-            {!loaded && <img src={loadingIcon} alt="loading" />}
+          {error && <p>{error}</p>}
+          {!loaded && <img src={loadingIcon} alt="loading" />}
         </>
     )
 }

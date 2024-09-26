@@ -83,12 +83,24 @@ app.post('/messages/save', async (req, res) => {
 app.get('/aboutus', async (req, res) => {
   // load information about me from database
   try {
+    /* code for handling if personal data is stored in dataabase
     const aboutUs = await Aboutus.findOne({name: 'sahar'})
-    console.log(aboutUs.name)
     res.json({
       name: aboutUs.name,
       content: aboutUs.content,
       img: aboutUs.img,
+      status: 'all good',
+    })
+    */
+    // hardcoded json file
+    res.json({
+      name: 'Sahar',
+      content: [
+        "I am a Latina student at NYU with an interest in computer science and web development. I love the process of full-stack development, especially working with anything related to javascript such as React and Node.",
+        "When I'm not working or programming, I love petting my cat Misa, drinking taro milk, and collecting korilakkuma plushies.",
+        "I'm committed to being the best version of myself everyday, whether it be as a developer or person, and I'm excited about this class!"
+      ],
+      img: "https://avatars.githubusercontent.com/u/69322388?v=4",
       status: 'all good',
     })
   } catch (err) {
